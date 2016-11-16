@@ -1,0 +1,344 @@
+html {
+    -moz-box-sizing: border-box;
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0px;
+    background-color: #00FA9A;
+    font-family: sans-serif;
+    -webkit-text-size-adjust: 100%;
+    -ms-text-size-adjust: 100%;
+    text-size-adjust: 100%;
+}
+
+.game {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 600px;
+    height: 600px;
+    margin-left: -300px;
+    margin-top: -360px;
+    -webkit-user-select: none;
+    user-select: none;
+    -webkit-tap-highlight-color: transparent;
+    tap-highlight-color: transparent;
+}
+
+.board {
+    width: 100%;
+    height: 100%;
+}
+
+.square {
+    float: left;
+    width: 33.333333333%;
+    height: 33.333333333%;
+    cursor: pointer;
+    border-width: 5px;
+    border-color: #223748;
+    will-change: border-color;
+	display:table;
+	
+}
+
+.square.top {
+    border-bottom-style: solid;
+}
+.square.bottom {
+    border-top-style: solid;
+	
+}
+.square.left {
+    clear: both;
+    border-right-style: solid;
+}
+.square.right {
+    border-left-style: solid;	
+}
+
+
+.restart {
+    position: absolute;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    cursor: pointer;
+    background-color: rgba(0, 0, 0, 0);
+}
+
+.scores {
+    position: absolute;
+    left: 50%;
+    top: 50%;
+    width: 600px;
+    margin-left: -300px;
+    margin-top: 290px;
+    text-align: center;
+    cursor: pointer;
+    -webkit-user-select: none;
+    user-select: none;
+}
+.scores p {
+    font: 20px "Raleway", sans-serif;
+    font-weight: 400;
+    text-transform: uppercase;
+    line-height: 1;
+    display: inline-block;
+    margin: 0;
+    padding: 0;
+    -webkit-transform: translate3d(0, 0, 0);
+    ;
+    transform: translate3d(0, 0, 0);
+}
+.scores .swap {
+    display: inline-block;
+    vertical-align: top;
+    width: 30px;
+    height: 30px;
+    margin: -5px -30px 0 0;
+    opacity: 0.4;
+    cursor: pointer;
+    -webkit-transition: opacity 0.1s linear;
+    -moz-transition: opacity 0.1s linear;
+    transition: opacity 0.1s linear;
+}
+.scores:hover .swap {
+    opacity: 1;
+}
+.scores .score {
+    font-size: 50px;
+    display: block;
+    height: 60px;
+    padding: 10px 0 0 0;
+    will-change: transform;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.scores .score.appear {
+    -webkit-animation: appear 0.3s cubic-bezier(0.5, 4, 0.1, 1.1);
+    -moz-animation: appear 0.3s cubic-bezier(0.5, 4, 0.1, 1.1);
+    animation: appear 0.3s cubic-bezier(0.5, 4, 0.1, 1.1);
+}
+.scores .o {
+    display: inline-block;
+    width: 13px;
+    height: 13px;
+    border-width: 2px;
+    margin: 1px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.scores .x {
+    display: inline-block;
+    width: 17px;
+    height: 17px;
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.scores .x:before,
+.scores .x:after {
+    top: 2px;
+    left: auto;
+    margin-left: 8px;
+    width: 2px;
+    height: 17px;
+}
+.player1,
+.player2 {
+    width: 230px;
+    white-space: nowrap;
+}
+.scores.p1 .p2 {
+    display: none;
+}
+.scores.p2 .p1 {
+    display: none;
+}
+.scores .turn {
+    opacity: 0.4;
+}
+
+@media (max-width: 630px),
+(max-height: 760px) {
+    .game {
+        width: 450px;
+        height: 450px;
+        margin-left: -225px;
+        margin-top: -265px;
+    }
+    .square .o {
+        border-width: 15px;
+    }
+    .square .x:before,
+    .square .x:after {
+        left: 67.5px;
+        top: 16px;
+        width: 15px;
+        height: 118px;
+        -webkit-border-radius: 3px;
+        -moz-border-radius: 3px;
+        border-radius: 3px;
+    }
+    .scores {
+        width: 450px;
+        margin-left: -225px;
+        margin-top: 215px;
+    }
+    .scores p {
+        font-size: 17px;
+        letter-spacing: 0;
+    }
+    .scores .score {
+        font-size: 40px;
+        padding-top: 8px;
+        height: 50px;
+    }
+    .scores .o {
+        width: 12px;
+        height: 12px;
+        border-width: 2px;
+        margin: 0 1px;
+    }
+    .scores .x {
+        width: 12px;
+        height: 12px;
+    }
+    .scores .x:before,
+    .scores .x:after {
+        top: 0;
+        margin-left: 5px;
+        width: 2px;
+        height: 14px;
+    }
+    .player1,
+    .player2 {
+        width: 180px;
+    }
+}
+@media (max-width: 540px),
+(max-height: 550px) {
+    .game {
+        width:300px;
+        height: 300px;
+        margin-left: -150px;
+        margin-top: -180px;
+    }
+    .square {
+        border-width: 2px;
+    }
+    .square .o {
+        border-width: 10px;
+    }
+    .square .x:before,
+    .square .x:after {
+        left: 45px;
+        top: 13px;
+        width: 10px;
+        height: 74px;
+        -webkit-border-radius: 2px;
+        -moz-border-radius: 2px;
+        border-radius: 2px;
+    }
+    .scores {
+        width: 300px;
+        margin-left: -150px;
+        margin-top: 160px;
+    }
+    .scores .swap {
+        display: none;
+    }
+    .scores p {
+        font-size: 14px;
+    }
+    .scores .score {
+        font-size: 25px;
+        padding-top: 9px;
+        height: 50px;
+    }
+    .scores .o {
+        width: 9px;
+        height: 9px;
+        margin: 0;
+    }
+    .scores .x {
+        width: 10px;
+        height: 10px;
+    }
+    .scores .x:before,
+    .scores .x:after {
+        margin-left: 4px;
+        height: 11px;
+    }
+    .player1,
+    .player2 {
+        width: 130px;
+    }
+}
+@media (max-height: 480px) {
+    .game {
+        top: 60px;
+        margin-top: 0;
+    }
+    .scores {
+        top: 400px;
+        margin-top: 0;
+        padding-bottom: 20px;
+    }
+}
+
+
+.O{ 
+	display: table-cell;
+    vertical-align: middle;
+	text-align:center;	
+	font-size: 50px;
+	color:#223748;
+}
+
+.X{
+	display: table-cell;
+    vertical-align: middle;
+	text-align:center;
+
+	font-size: 50px;
+	color:#223748;	
+}
+
+h1
+{   
+	text-align:center;
+	font-size: 50px;
+	color:#ffac39;
+	
+}
+
+
+.vertical-alignment-helper {
+    display:table;
+    height: 100%;
+    width: 100%;
+    pointer-events:none;
+}
+.vertical-align-center {
+    /* To center vertically */
+    display: table-cell;
+    vertical-align: middle;
+    pointer-events:none;
+}
+.modal-content {
+    /* Bootstrap sets the size of the modal in the modal-dialog class, we need to inherit it */
+    width:80%;
+    height:inherit;
+	text-align:center;
+    /* To center horizontally */
+    margin: 0 auto;
+    pointer-events:all;
+}
+
+
+.modal-footer{
+	text-align:center;
+}
+
